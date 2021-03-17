@@ -1,4 +1,4 @@
-const CaptainsLog = require('../models').CaptainsLog;
+const CaptainsLog = require('../models').captainslog;
 
 const getAll = (req, res) => {
     CaptainsLog.findAll()
@@ -8,6 +8,5 @@ const getAll = (req, res) => {
 }
 
 module.exports = {
-    getAll,
-
+    getAll
 }

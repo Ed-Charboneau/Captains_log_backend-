@@ -1,4 +1,4 @@
 module.exports = {
-    Logs: require('./Logs'),
+    logs: require('./logs'),
     items: require('./items')
 }
