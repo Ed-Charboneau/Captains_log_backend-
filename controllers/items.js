@@ -1,5 +1,4 @@
-const User = require("../models").User;
-const Record = require("../models").Record;
+const Item = require("../models").Item;
 
 
 const index = (req, res) => {
@@ -46,7 +45,7 @@ const renderProfile = (req, res) => {
             res.render("users/profile.ejs", {
                 user: userProfile,
                 records: allRecords
-            })        
+            })
         })
      })
 };
@@ -63,25 +62,25 @@ const editProfile = (req, res) => {
         .then(foundRecord => {
             User.findByPk(req.params.id)
             .then(foundUser => {
-                foundUser.addRecord(foundRecord);  
+                foundUser.addRecord(foundRecord);
                 res.redirect(`/users/profile/${req.params.id}`);
-            })           
-        })        
+            })
+        })
     })
 }
 
-const addRecord = (req, res) => {    
+const addRecord = (req, res) => {
         User.findByPk(req.params.id)
         .then(foundUser => {
             Record.findByPk(req.body.recordId)
             .then(foundRecord => {
-                foundUser.addRecord(foundRecord);  
+                foundUser.addRecord(foundRecord);
                 console.log("line 80")
                 res.redirect(`/users/profile/${req.params.id}`);
             })
         })
 }
-        
+
 
 const removeRecord = (req, res) => {
     UserRecord.destroy({
@@ -93,7 +92,7 @@ const removeRecord = (req, res) => {
 }
 
 const deleteUser = (req, res) => {
-    User.destroy({ 
+    User.destroy({
         where: { id: req.params.id } })
     .then(() => {
         res.redirect('/users');

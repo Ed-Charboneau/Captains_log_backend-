@@ -2,7 +2,7 @@ require('dotenv').config();
 
 const express = require('express');
 const cors = require('cors');
-
+const bodyParser = require('body-parser');
 const app = express();
 const routes = require('./routes');
 
@@ -16,8 +16,7 @@ const corsOptions = {
 app.use(cors(corsOptions))
 app.use(bodyParser.json());
 
-app.use('lo')
-
+app.use('/logs', routes.logs);
 
 app.listen(3001, () => {
     console.log(`I am listening on port 3001`);
