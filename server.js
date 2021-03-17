@@ -18,6 +18,6 @@ app.use(bodyParser.json());
 
 app.use('/logs', routes.logs);
 
-app.listen(3001, () => {
+app.listen(process.env.PORT, () => {
     console.log(`I am listening on port 3001`);
 })
